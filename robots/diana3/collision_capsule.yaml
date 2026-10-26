@@ -1,0 +1,48 @@
+link0:
+  - xyz: "-0.0325 0.0 0.03912"
+    length: 0.115
+    radius: 0.053
+    direction: "x"
+link1:
+  - xyz: "0.0 0.0 -0.17475"
+    length: 0.1545
+    radius: 0.08
+    direction: "z"
+link2:
+  - xyz: "0.0 0.0 0.0"
+    length: 0.2066
+    radius: 0.08
+    direction: "z"
+link3:
+  - xyz: "0.0 0.0 -0.179"
+    length: 0.226
+    radius: 0.075
+    direction: "z"
+link4:
+  - xyz: "0.0 0.0 0.0"
+    length: 0.157
+    radius: 0.075
+    direction: "z"
+link5:
+  - xyz: "-0.0102 0.0 -0.25755"
+    length: 0.135
+    radius: 0.062
+    direction: "z"
+  - xyz: "0.0 -0.06397 -0.12775"
+    length: 0.1146
+    radius: 0.048
+    direction: "z"
+link6:
+  - xyz: "0.0 0.0 0.005"
+    length: 0.15
+    radius: 0.058
+    direction: "z"
+link7:
+  - xyz: "0.0 0.0 -0.10226"
+    length: 0.14
+    radius: 0.05
+    direction: "z"
+  - xyz: "-0.04375 0.0 -0.0359"
+    length: 0.015
+    radius: 0.045
+    direction: "x"

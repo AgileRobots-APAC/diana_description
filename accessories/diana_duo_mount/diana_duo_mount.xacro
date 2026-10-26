@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find diana_description)/robots/common/utils.xacro"/>
+
+  <xacro:property name="mount_kinematics"
+    value="${xacro.load_yaml('$(find diana_description)/accessories/diana_duo_mount/kinematics.yaml')}"/>
+
+  <xacro:macro name="mount" params="name parent left_prefix right_prefix">
+    <xacro:property name="inertials"
+      value="${xacro.load_yaml('$(find diana_description)/accessories/diana_duo_mount/inertials.yaml')}"/>
+    <link name="diana_duo_mount_mounting_point">
+      <visual>
+        <geometry>
+          <mesh filename="package://diana_description/meshes/accessories/diana_duo_mount/visual/diana_duo_mount.stl"/>
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh
+            filename="package://diana_description/meshes/accessories/diana_duo_mount/collision/diana_duo_mount.stl"/>
+        </geometry>
+      </collision>
+      <xacro:diana-inertials name="mount"/>
+    </link>
+
+    <link name="diana_duo_mount_origin"/>
+
+    <joint name="diana_duo_mount_origin_joint" type="fixed">
+      <parent link="diana_duo_mount_mounting_point"/>
+      <child link="diana_duo_mount_origin"/>
+      <origin
+        xyz="${-mount_kinematics['diana_duo_mount_mounting_point']['kinematic']['x']} ${-mount_kinematics['diana_duo_mount_mounting_point']['kinematic']['y']} ${-mount_kinematics['diana_duo_mount_mounting_point']['kinematic']['z']}"
+        rpy="${-mount_kinematics['diana_duo_mount_mounting_point']['kinematic']['roll']} ${-mount_kinematics['diana_duo_mount_mounting_point']['kinematic']['pitch']} ${-mount_kinematics['diana_duo_mount_mounting_point']['kinematic']['yaw']}"/>
+    </joint>
+
+    <!-- Mounting points for left and right robot -->
+    <link name="diana_duo_mount_${left_prefix}"/>
+    <joint name="diana_duo_mount_${left_prefix}_joint" type="fixed">
+      <parent link="diana_duo_mount_origin"/>
+      <child link="diana_duo_mount_${left_prefix}"/>
+      <origin
+        xyz="${mount_kinematics['diana_duo_mount_left']['kinematic']['x']} ${mount_kinematics['diana_duo_mount_left']['kinematic']['y']} ${mount_kinematics['diana_duo_mount_left']['kinematic']['z']}"
+        rpy="${mount_kinematics['diana_duo_mount_left']['kinematic']['roll']} ${mount_kinematics['diana_duo_mount_left']['kinematic']['pitch']} ${mount_kinematics['diana_duo_mount_left']['kinematic']['yaw']}"/>
+    </joint>
+    <link name="diana_duo_mount_${right_prefix}">
+    </link>
+    <joint name="diana_duo_mount_${right_prefix}_joint" type="fixed">
+      <parent link="diana_duo_mount_origin"/>
+      <child link="diana_duo_mount_${right_prefix}"/>
+      <origin
+        xyz="${mount_kinematics['diana_duo_mount_right']['kinematic']['x']} ${mount_kinematics['diana_duo_mount_right']['kinematic']['y']} ${mount_kinematics['diana_duo_mount_right']['kinematic']['z']}"
+        rpy="${mount_kinematics['diana_duo_mount_right']['kinematic']['roll']} ${mount_kinematics['diana_duo_mount_right']['kinematic']['pitch']} ${mount_kinematics['diana_duo_mount_right']['kinematic']['yaw']}"/>
+    </joint>
+
+    <!-- The mount fixing the duo mount to the parent link with the identity transform -->
+    <joint name="mount_joint" type="fixed">
+      <parent link="${parent}"/>
+      <child link="diana_duo_mount_mounting_point"/>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0"/>
+    </joint>
+  </xacro:macro>
+
+</robot>

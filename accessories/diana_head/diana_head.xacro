@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find diana_description)/robots/common/utils.xacro"/>
+
+  <xacro:property name="head_kinematics"
+    value="${xacro.load_yaml('$(find diana_description)/accessories/diana_head/kinematics.yaml')}"/>
+
+  <xacro:macro name="head" params="parent">
+    <xacro:property name="inertials"
+      value="${xacro.load_yaml('$(find diana_description)/accessories/diana_head/inertials.yaml')}"/>
+    <link name="head_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://diana_description/meshes/accessories/diana_head/visual/diana_head.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://diana_description/meshes/accessories/diana_head/collision/diana_head.stl"/>
+        </geometry>
+      </collision>
+      <xacro:diana-inertials name="head"/>
+    </link>
+
+    <joint name="head_joint" type="fixed">
+      <parent link="${parent}"/>
+      <child link="head_link"/>
+      <origin
+        xyz="${head_kinematics['head']['kinematic']['x']} ${head_kinematics['head']['kinematic']['y']} ${head_kinematics['head']['kinematic']['z']}"
+        rpy="${head_kinematics['head']['kinematic']['roll']} ${head_kinematics['head']['kinematic']['pitch']} ${head_kinematics['head']['kinematic']['yaw']}"/>
+    </joint>
+
+    <link name="head_camera_mounting_point">
+      <xacro:diana-inertials name="head_camera_mounting_point"/>
+    </link>
+
+    <joint name="head_camera_mounting_point_joint" type="fixed">
+      <parent link="head_link"/>
+      <child link="head_camera_mounting_point"/>
+      <origin
+        xyz="${head_kinematics['head_camera_mounting_point']['kinematic']['x']} ${head_kinematics['head_camera_mounting_point']['kinematic']['y']} ${head_kinematics['head_camera_mounting_point']['kinematic']['z']}"
+        rpy="${head_kinematics['head_camera_mounting_point']['kinematic']['roll']} ${head_kinematics['head_camera_mounting_point']['kinematic']['pitch']} ${head_kinematics['head_camera_mounting_point']['kinematic']['yaw']}"/>
+    </joint>
+
+  </xacro:macro>
+
+</robot>
