@@ -1,3 +1,6 @@
+# NOTICE:
+# The dynamic parameters will be updated later 
+# and are currently only used as placeholders.
 joint1:
   dynamic:
     D: 1
@@ -6,8 +9,8 @@ joint1:
     friction: 0.1
     mu_coulomb: 0
     mu_viscous: 16
-    motor_inertia: 0.00004206399
-    gear_ratio: 120.0
+    motor_inertia: 0.00004206399 # TODO: Not Support yet, placeholder only
+    gear_ratio: 121.0
 
 joint2:
   dynamic:
@@ -17,8 +20,8 @@ joint2:
     friction: 0.1
     mu_coulomb: 0
     mu_viscous: 16
-    motor_inertia: 0.00004206399
-    gear_ratio: 120.0
+    motor_inertia: 0.00004206399 # TODO: Not Support yet, placeholder only
+    gear_ratio: 121.0
 
 joint3:
   dynamic:
@@ -28,8 +31,8 @@ joint3:
     friction: 0.1
     mu_coulomb: 0
     mu_viscous: 16
-    motor_inertia: 0.00003211626
-    gear_ratio: 120.0
+    motor_inertia: 0.00003211626 # TODO: Not Support yet, placeholder only
+    gear_ratio: 121.0
 
 joint4:
   dynamic:
@@ -39,8 +42,8 @@ joint4:
     friction: 0.1
     mu_coulomb: 0
     mu_viscous: 16
-    motor_inertia: 0.00003211626
-    gear_ratio: 120.0
+    motor_inertia: 0.00003211626 # TODO: Not Support yet, placeholder only
+    gear_ratio: 121.0
 
 joint5:
   dynamic:
@@ -51,7 +54,7 @@ joint5:
     mu_coulomb: 0
     mu_viscous: 16
     motor_inertia: 0.00003211626
-    gear_ratio: 80.0
+    gear_ratio: 101.0
 
 joint6:
   dynamic:
@@ -61,8 +64,8 @@ joint6:
     friction: 0.1
     mu_coulomb: 0
     mu_viscous: 16
-    motor_inertia: 0.00003211626
-    gear_ratio: 80.0
+    motor_inertia: 0.00003211626 # TODO: Not Support yet, placeholder only
+    gear_ratio: 101.0
 
 joint7:
   dynamic:
@@ -72,5 +75,5 @@ joint7:
     friction: 0.1
     mu_coulomb: 0
     mu_viscous: 16
-    motor_inertia: 0.00003211626
-    gear_ratio: 80.0
+    motor_inertia: 0.00003211626 # TODO: Not Support yet, placeholder only
+    gear_ratio: 101.0
